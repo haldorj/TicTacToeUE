@@ -39,7 +39,7 @@ AMyPawn::AMyPawn()
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(GetRootComponent());
 	SpringArm->SetRelativeRotation(FRotator(-50.f,0.f,0.f));
-	SpringArm->TargetArmLength = 400.f;
+	SpringArm->TargetArmLength = 500.f;
 
 	//Camera
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
@@ -54,13 +54,22 @@ AMyPawn::AMyPawn()
 			SphereArray[i]->SetMaterial(0, WhiteMaterial);
 		}
 	}
+	SphereArray[0]->SetWorldLocation(FVector(0.f, -150.f, 100.f));
+	SphereArray[1]->SetWorldLocation(FVector(0.f, 0.f, 100.f));
+	SphereArray[2]->SetWorldLocation(FVector(0.f, 150.f, 100.f));
+	SphereArray[3]->SetWorldLocation(FVector(-150.f, -150.f, 100.f));
+	SphereArray[4]->SetWorldLocation(FVector(-150.f, 0.f, 100.f));
+	SphereArray[5]->SetWorldLocation(FVector(-150.f, 150.f, 100.f));
+	SphereArray[6]->SetWorldLocation(FVector(-300.f, -150.f, 100.f));
+	SphereArray[7]->SetWorldLocation(FVector(-300.f, 0.f, 100.f));
+	SphereArray[8]->SetWorldLocation(FVector(-300.f, 150.f, 100.f));
 }
 
 // Called when the game starts or when spawned
 void AMyPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -79,6 +88,7 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AMyPawn::OnePressed()
 {
+	
 }
 
 void AMyPawn::TwoPressed()
@@ -111,4 +121,66 @@ void AMyPawn::EightPressed()
 
 void AMyPawn::NinePressed()
 {
+}
+
+// Function to check if there is a winner
+void AMyPawn::IsWinner()
+{
+	// Checking rows (Player 1)
+	if ((WhichPlayer[0] == 1 && WhichPlayer[1] == 1 && WhichPlayer[2] == 1) ||
+		(WhichPlayer[3] == 1 && WhichPlayer[4] == 1 && WhichPlayer[5] == 1) ||
+		(WhichPlayer[6] == 1 && WhichPlayer[7] == 1 && WhichPlayer[8] == 1)) {
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Player 1 won!"));
+		}
+		UE_LOG(LogTemp, Warning, TEXT(" Player 1 won!"));
+	}
+
+	// Checking rows (Player 1)
+	if ((WhichPlayer[0] == 2 && WhichPlayer[1] == 2 && WhichPlayer[2] == 2) ||
+		(WhichPlayer[3] == 2 && WhichPlayer[4] == 2 && WhichPlayer[5] == 2) ||
+		(WhichPlayer[6] == 2 && WhichPlayer[7] == 2 && WhichPlayer[8] == 2)) {
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Player 2 won!"));
+		}
+		UE_LOG(LogTemp, Warning, TEXT(" Player 2 won!"));
+	}
+
+	// Checking columns (Player 1)
+	if ((WhichPlayer[0] == 1 && WhichPlayer[3] == 1 && WhichPlayer[6] == 1) ||
+		(WhichPlayer[1] == 1 && WhichPlayer[4] == 1 && WhichPlayer[7] == 1) ||
+		(WhichPlayer[2] == 1 && WhichPlayer[5] == 1 && WhichPlayer[8] == 1)) {
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Player 1 won!"));
+		}
+		UE_LOG(LogTemp, Warning, TEXT(" Player 1 won!"));
+	}
+
+	// Checking columns (Player 2)
+	if ((WhichPlayer[0] == 2 && WhichPlayer[3] == 2 && WhichPlayer[6] == 2) ||
+		(WhichPlayer[1] == 2 && WhichPlayer[4] == 2 && WhichPlayer[7] == 2) ||
+		(WhichPlayer[2] == 2 && WhichPlayer[5] == 2 && WhichPlayer[8] == 2)) {
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Player 2 won!"));
+		}
+		UE_LOG(LogTemp, Warning, TEXT(" Player 2 won!"));
+	}
+
+	// Checking diagonals (Player 1)
+	if ((WhichPlayer[0] == 1 && WhichPlayer[4] == 1 && WhichPlayer[8] == 1) ||
+		(WhichPlayer[2] == 1 && WhichPlayer[4] == 1 && WhichPlayer[6] == 1)) {
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Player 1 won!"));
+		}
+		UE_LOG(LogTemp, Warning, TEXT(" Player 1 won!"));
+	}
+
+	// Checking diagonals (Player 1)
+	if ((WhichPlayer[0] == 2 && WhichPlayer[4] == 2 && WhichPlayer[8] == 2) ||
+		(WhichPlayer[2] == 2 && WhichPlayer[4] == 2 && WhichPlayer[6] == 2)) {
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Player 2 won!"));
+		}
+		UE_LOG(LogTemp, Warning, TEXT(" Player 2 won!"));
+	}
 }
