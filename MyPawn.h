@@ -26,7 +26,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	//------------------
 	//My designated area
+	//------------------
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mytools)
@@ -85,4 +87,7 @@ public:
 
 	UFUNCTION(Category = "UFunctions")
 		void NinePressed();
+
+	UFUNCTION(Category = UFunctions)
+		void IsWinner();
 };
