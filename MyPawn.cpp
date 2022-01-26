@@ -54,6 +54,17 @@ AMyPawn::AMyPawn()
 			SphereArray[i]->SetMaterial(0, WhiteMaterial);
 		}
 	}
+}
+
+// Called when the game starts or when spawned
+void AMyPawn::BeginPlay()
+{
+	Super::BeginPlay();
+
+	for (int i = 0; i < 9; i++) {
+		SphereArray[i]->SetMaterial(0, WhiteMaterial);
+	}
+
 	SphereArray[0]->SetWorldLocation(FVector(0.f, -150.f, 100.f));
 	SphereArray[1]->SetWorldLocation(FVector(0.f, 0.f, 100.f));
 	SphereArray[2]->SetWorldLocation(FVector(0.f, 150.f, 100.f));
@@ -63,13 +74,6 @@ AMyPawn::AMyPawn()
 	SphereArray[6]->SetWorldLocation(FVector(-300.f, -150.f, 100.f));
 	SphereArray[7]->SetWorldLocation(FVector(-300.f, 0.f, 100.f));
 	SphereArray[8]->SetWorldLocation(FVector(-300.f, 150.f, 100.f));
-}
-
-// Called when the game starts or when spawned
-void AMyPawn::BeginPlay()
-{
-	Super::BeginPlay();
-
 }
 
 // Called every frame
@@ -88,39 +92,173 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AMyPawn::OnePressed()
 {
-	
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[0] == 0) {
+		SphereArray[0]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[0] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[0] == 0) {
+		SphereArray[0]->SetMaterial(0, RedMaterial);
+		WhichPlayer[0] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::TwoPressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[1] == 0) {
+		SphereArray[1]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[1] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[1] == 0) {
+		SphereArray[1]->SetMaterial(0, RedMaterial);
+		WhichPlayer[1] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::ThreePressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[2] == 0) {
+		SphereArray[2]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[2] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[2] == 0) {
+		SphereArray[2]->SetMaterial(0, RedMaterial);
+		WhichPlayer[2] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::FourPressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[3] == 0) {
+		SphereArray[3]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[3] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[3] == 0) {
+		SphereArray[3]->SetMaterial(0, RedMaterial);
+		WhichPlayer[3] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::FivePressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[4] == 0) {
+		SphereArray[4]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[4] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[4] == 0) {
+		SphereArray[4]->SetMaterial(0, RedMaterial);
+		WhichPlayer[4] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::SixPressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[5] == 0) {
+		SphereArray[5]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[5] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[5] == 0) {
+		SphereArray[5]->SetMaterial(0, RedMaterial);
+		WhichPlayer[5] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::SevenPressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[6] == 0) {
+		SphereArray[6]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[6] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[6] == 0) {
+		SphereArray[6]->SetMaterial(0, RedMaterial);
+		WhichPlayer[6] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::EightPressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[7] == 0) {
+		SphereArray[7]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[7] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[7] == 0) {
+		SphereArray[7]->SetMaterial(0, RedMaterial);
+		WhichPlayer[7] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 void AMyPawn::NinePressed()
 {
+	// Player 1
+	if (bPlayerTurn = true && WhichPlayer[8] == 0) {
+		SphereArray[8]->SetMaterial(0, BlueMaterial);
+		WhichPlayer[8] = 1;
+		bPlayerTurn = false;
+		IsWinner();
+	}
+
+	// Player 2
+	if (bPlayerTurn = false && WhichPlayer[8] == 0) {
+		SphereArray[8]->SetMaterial(0, RedMaterial);
+		WhichPlayer[8] = 2;
+		bPlayerTurn = true;
+		IsWinner();
+	}
 }
 
 // Function to check if there is a winner
@@ -136,7 +274,7 @@ void AMyPawn::IsWinner()
 		UE_LOG(LogTemp, Warning, TEXT(" Player 1 won!"));
 	}
 
-	// Checking rows (Player 1)
+	// Checking rows (Player 2)
 	if ((WhichPlayer[0] == 2 && WhichPlayer[1] == 2 && WhichPlayer[2] == 2) ||
 		(WhichPlayer[3] == 2 && WhichPlayer[4] == 2 && WhichPlayer[5] == 2) ||
 		(WhichPlayer[6] == 2 && WhichPlayer[7] == 2 && WhichPlayer[8] == 2)) {
@@ -175,7 +313,7 @@ void AMyPawn::IsWinner()
 		UE_LOG(LogTemp, Warning, TEXT(" Player 1 won!"));
 	}
 
-	// Checking diagonals (Player 1)
+	// Checking diagonals (Player 2)
 	if ((WhichPlayer[0] == 2 && WhichPlayer[4] == 2 && WhichPlayer[8] == 2) ||
 		(WhichPlayer[2] == 2 && WhichPlayer[4] == 2 && WhichPlayer[6] == 2)) {
 		if (GEngine) {
@@ -184,5 +322,3 @@ void AMyPawn::IsWinner()
 		UE_LOG(LogTemp, Warning, TEXT(" Player 2 won!"));
 	}
 }
-
-// TEST MELDING FOR GITHUB
